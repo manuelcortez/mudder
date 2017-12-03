@@ -2,7 +2,7 @@
 
 Modified Lyntin with a completely accessible graphical user interface.
 
-Mudder is a software to allow playing of MUD (multi user domain) games in an easy and accessible way. Its goal is to integrate some good known open source projects for making a mud client that can fits everyone. Mudder, in fact, is a Graphical User interface around [Lyntin,](https://pypi.python.org/pypi/Lyntin/4.2) a Python based MUD client that is modular and allows people to write their own modules to improve its performance. Once finished, mudder should allow the following features:
+Mudder is a software to allow playing of MUD (multi user domain) games in an easy and accessible way. Its goal is to integrate some good known open source projects for making a mud client that can fits everyone. Mudder, in fact, is a Graphical User interface around [Lyntin,](https://pypi.python.org/pypi/Lyntin/4.2) a Python based MUD client that is modular and allows people to write their own modules to improve its performance. Once finished, mudder should include the following features:
 
 * Translatable interface and all Lyntin texts.
 * Access all Lyntin commands from a graphical user interface wich will allow screen readers to read automatically updates in some elements.
