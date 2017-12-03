@@ -15,4 +15,4 @@ Mudder is a software to allow playing of MUD (multi user domain) games in an eas
 * Most Tintin macro commands: if, math, loop...
 * Has a Lyntin and Tintin evaluation modes--the Tintin mode will work with Tintin command files and Tintin syntax.
 * In-game help 
-Dynamically loaded modules for additional functionality.
+* Dynamically loaded modules for additional functionality.
