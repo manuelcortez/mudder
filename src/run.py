@@ -14,9 +14,9 @@ bootoptions = {"ui": "wx",
                "snoopdefault": 1}
 
 import sys
-import output
 import fixes
 fixes.setup()
+import output
 output.setup()
 if len(sys.argv) >= 2:
   bootoptions["readfile"] = [sys.argv[1]]

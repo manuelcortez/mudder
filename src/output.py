@@ -1,33 +1,42 @@
 # *- coding: utf-8 -*-
 import logging as original_logging
-logging = original_logging.getLogger('core.output')
+logger = original_logging.getLogger('core.output')
 
 from accessible_output2 import outputs
 import sys
 
 speaker = None
+retries = 0
 
 def speak(text, interrupt=0):
- global speaker
+ global speaker, retries
  if not speaker:
   setup()
- speaker.speak(text, interrupt)
- speaker.braille(text)
+ try:
+  speaker.speak(text, interrupt)
+ except:
+  if retries < 5:
+   retries = retries + 1
+   speak(text)
+# speaker.braille(text)
 
 def setup ():
  global speaker
- logging.debug("Initializing output subsystem.")
+ logger.debug("Initializing output subsystem.")
  try:
 #  speaker = speech.Speaker(speech.outputs.Sapi5())
 #  else:
   speaker = outputs.auto.Auto()
  except:
-  return logging.exception("Output: Error during initialization.")
+  logger.exception("Output: Error during initialization.")
+
+def enable_sapi():
+  speaker = outputs.sapi.SAPI5()
 
 def copy(text):
  import win32clipboard
  #Copies text to the clipboard.
  win32clipboard.OpenClipboard()
  win32clipboard.EmptyClipboard()
- win32clipboard.SetClipboardText(text, win32clipboard.CF_UNICODETEXT)
+ win32clipboard.SetClipboardText(text)
  win32clipboard.CloseClipboard()

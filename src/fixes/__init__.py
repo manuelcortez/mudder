@@ -3,5 +3,5 @@
 import sys
 import fix_win32com
 def setup():
-#	if hasattr(sys, "frozen"):
-	fix_win32com.fix()
+	if hasattr(sys, "frozen"):
+		fix_win32com.fix()
