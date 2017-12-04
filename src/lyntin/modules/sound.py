@@ -8,25 +8,27 @@ commands_dict = {}
 
 import sound_lib
 
-volume = 50
+_volume = 50
 
 sources = []
 
 def play(sound):
-    global sources, volume
+    global sources, _volume
     src = sound_lib.stream.FileStream(file=os.path.abspath(sound))
-    src.volume=int(volume)/100.0
+    src.volume=int(_volume)/100.0
     src.play()
     sources.append(src)
     for src in sources[:]:
       if not src.is_playing:
         sources.remove(src)
 
-def sound_cmd(ses, args, input):
+def play_cmd(ses, args, input):
     """
-    This command allows you to play a sound.
+    Play a sound. The sound should be in the sounds folder, located in the mudder path.
 
-Example:
+Examples:
+#sound.play myfile.ogg
+#sound.play mysound.ogg volume=50
 #sound myexample.ogg volume=50 loop=false
     """
     filename = args["filename"]
@@ -42,24 +44,24 @@ Example:
 #    except:
 #        exported.write_message("couldn't play sound: %s" % filename)
 
-commands_dict["sound"] = (sound_cmd, "filename= volume=50 loop:boolean=false")
+commands_dict["sound.play"] = (play_cmd, "filename= volume=50 loop:boolean=false")
 
-def soundvolume_cmd(ses, args, input):
+def volume_cmd(ses, args, input):
     """
-    This command allows you to set the sound volume (from 0 to 100).
+    Set default volume. The default volume will be used for all played sounds, unless otherwise specified. Volume must be in range 0-100.
     """
-    global volume
+    global _volume
     try:
         v = int(args["volume"])
         if 0 <= v <= 100:
-            volume = v
+            _volume = v
             exported.write_message("sound volume set to %s" % args["volume"])
         else:
             raise
     except:
         exported.write_message("couldn't set volume: %s must be an integer from 0 to 100" % args["volume"])
 
-commands_dict["soundvolume"] = (soundvolume_cmd, "volume")
+commands_dict["sound.volume"] = (volume_cmd, "volume")
 
 def load():
     """ Initializes the module by binding all the commands."""
