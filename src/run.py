@@ -22,6 +22,7 @@ if len(sys.argv) >= 2:
   bootoptions["readfile"] = [sys.argv[1]]
 
 if __name__ == '__main__':
+  import application
   import lyntin.engine
   lyntin.engine.main(bootoptions)
 

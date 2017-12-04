@@ -1054,7 +1054,7 @@ def main(defaultoptions={}):
         config.options['readfile'].insert(0, lyntinrcfile)
   
     # import modules listed in modulesinit
-    exported.write_message("Loading Lyntin modules.")
+    exported.write_message("Loading modules.")
   
     try:
       import modules.__init__

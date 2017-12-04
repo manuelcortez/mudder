@@ -13,7 +13,8 @@ def get_ui_instance():
 
 HELP_TEXT = """
 Mudder will allow you to play your MUD games easily.
-"""
+
+category: mudder"""
 
 class window(wx.Frame):
   def __init__(self):
