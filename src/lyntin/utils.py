@@ -686,7 +686,7 @@ def columnize(textlist, screenwidth=72, indent=0):
 
   idx = 0
   for mem in textlist:
-    rows[idx].append(mem.ljust(maxwidth))
+    rows[idx].append(mem.ljust(maxwidth)+",")
     idx = (idx + 1) % numrows
 
   rows = map(string.rstrip, map(string.join, rows))
