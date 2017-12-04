@@ -42,8 +42,7 @@ category: readme
 """
 
 command = """
-Lyntin uses Lyntin commands to allow you to manipulate the Lyntin 
-client and setup your session with aliases, variables, actions, 
+Mudder uses Lyntin as the framework for connecting to MUD games. Mudder uses Lyntin commands to allow you to setup your session with aliases, variables, actions, 
 and such.  Commands start with the command character--by default 
 this is "#".  It can be changed with the "#config" command.  The 
 command character can also do some other special things:
@@ -71,7 +70,6 @@ command character can also do some other special things:
 
       #5 say hello        - will run "say hello" 5 times
       
-
 Commands are separated by the semicolon.  Semicolons can be 
 escaped with the \ character.  examples:
 
@@ -96,37 +94,13 @@ category: readme
 """
 
 contribute = """
-Development and maintenance is entirely managed by the maintainer 
-right now.  If you're interested in sending in bug fixes, please 
-feel welcome.  I'm extremely accomodating to most methods of 
-sending in patches, however a diff -u against the code in cvs is
-great for this sort of thing.
-
-All patches and such things should be sent to the mailing list at:
-
-   lyntin-devl@lists.sourceforge.net
-
-NOTE: Patches will not be applied unless the author either yields 
-the copyright to the FSF or to me (and then I'll yield it to the 
-FSF).
-
-Please read through the web-site areas on coding conventions and 
-such before sending in code.
+Development and maintenance is entirely managed in github. Please send any pull request to https://github.com/manuelcortez/mudder
 
 category: readme
 """
 
 errata = """
-The latest release of Lyntin is always available from:
-
-   http://lyntin.sourceforge.net/
-
-in the "download" section.  We also have snapshots of what's in CVS 
-in the "development" section.
-
-There are very few developers working on Lyntin, but we turn
-around emails in very short periods of time.  Issues/bugs are
-tracked by me by hand since the Sourceforge trackers _suck_.
+For now, there are no built versions of mudder available for donwload. We will change it soon!
 
 When communicating bugs or feature requests INCLUDE AS MUCH 
 INFORMATION AS POSSIBLE.  If you don't, I'll just ask you for
@@ -156,7 +130,7 @@ the Tintin variable evaluation did not provide for.
     like ${a} and ${ab} which will guarantee unambiguosity.
 
   * Variable expansion is always done on user input before 
-    commands are evaluted.  This means variables can be used as 
+    commands are evaluated.  This means variables can be used as 
     arguments to any commands, etc.  It also means that if you
     want the variable actually in the command, you have to prepend
     another $.
@@ -170,7 +144,7 @@ the Tintin variable evaluation did not provide for.
   * Placement vars in actions and aliases support an expanded 
     syntax based on python array slices.  %0:1 will evaluate to 
     the first and second arguments, while %0: will be all 
-    arguments, and %:-1 will be all but the last argumen, etc.
+    arguments, and %:-1 will be all but the last argument, etc.
 
 Examples:
 
@@ -215,28 +189,21 @@ general = """
 Type "#help help" for help on how to use the in-game help system.
 
 Read through the "#help readme" topics.  These will help as they 
-will walk you through how Lyntin works, how to get additional 
+will walk you through how Mudder and Lyntin work, how to get additional 
 help, where to go for answers, and what to do if you find a bug.  
 These are also exported into the README file.
 
 You should read through the topics in "#help commands" for all 
-the currently registered Lyntin commands.
-
-Each user interface has its own help topic--these will be on the 
-top level of the help structure.
+the currently registered Mudder commands.
 
 To start, the "#session" command will allow you to start a 
-session.  When you're done, "#end" will close Lyntin.
-
-All documentation that comes with Lyntin is also available on the
-Lyntin web-site.  If you find problems with the documentation or
-have fixes for it, let us know on the lyntin-devl mailing list.
+session.  When you're done, "#end" will close Mudder.
 
 category: readme
 """
 
 gettingstarted = """
-Lyntin incorporates the _look and feel_ of Tintin, so if you've used
+Mudder uses Lyntin to provide all client's functionality. Lyntin incorporates the _look and feel_ of Tintin, so if you've used
 Tintin or a variant it should be pretty easy to make the transition.  
 It offers all the major features of Tintin, including multiple 
 sessions, but leaves some things out.
@@ -245,65 +212,16 @@ There are *in-game* help files covering the commands and most
 other things we could think of which can be accessed with the "#help"
 command.
 
-All the documentation comes with Lyntin and is also available on
-the Lyntin website in HTML form.  If you find problems with the 
-documentation or have fixes for it, let us know.
-
-You can use a config file to configure Lyntin at startup.  Alternatively
-you can edit the startup script and embed the boot options which
-get passed into the lyntin.engine.main function.
-
 category: readme
 """
 
 osnotes = """
-Lyntin works in most environments we can think of, but it has some
-caveats with the various operating systems due to differences 
-between them.
-
-WINDOWS
--------
-
-Windows users should use either \\ or / to denote directory 
-separaters.
-
-ex::
-
-   #write c:\\commandfile
-   #write c:/commandfile
-
-
-REDHAT LINUX
-------------
-
-Depending on which version of RedHat Linux you have, you will have 
-to install the Python RPM as well as the Python Tkinter RPM.  If 
-you don't install the Tkinter RPM, then you won't be able to use 
-the Tk ui and it'll complain that it's missing a library when you 
-try.
-
-
-MAC OSX
--------
-
-I have no experience with Mac OSX but after reading the various 
-pages on Python and how it works on OSX, I'm hesitant to say 
-Lyntin is fully supported.  However, I don't know of any reason 
-it shouldn't be supported either except that one person on the 
-mailing list has had problems with getting #write to work.
-
-
-OTHER NOTES
------------
-
-If you encounter other operating system issues, let us know both 
-the problem and the solution so we can add them here.
-
+for now, Mudder works only in Windows, but it should be relatively easy to get it to work in other operating systems.
 category: readme
 """
 
 regexp = """
-Lyntin allows the use of regular expressions in various arguments
+Mudder allows the use of regular expressions in various arguments
 for commands like #action, #highlight, and such.  It uses a 
 specific format to trigger using raw regular expressions rather 
 than having your argument get escaped so it can be compiled into 
@@ -342,34 +260,6 @@ Note: It may have moved since this was written.
 category: readme
 """
 
-whylyntin = """
-Lyntin is written entirely in Python--a nicely written and very 
-portable programming language.  Thusly Lyntin is platform 
-independent.  Lyntin is exposes the Python interpreter allow you 
-more freedom than mere 'if you see this then send this' aliases 
-and triggers.  They can be Python functions which do anything 
-from setting a variable to forking a web spider.  In addition, 
-your code can interface with Lyntin's code.  
-
-Lyntin is great if:
-
-1. you want a mud client that you can see the source code to
-   and adjust it to suit your needs
-2. you want a mud client that has a sophisticated API for 
-   enhancing and building bots/agents/triggers more advanced than
-   "if you see this then do this"
-3. you want a mud client that works on all your machines,
-   has a text ui, a tk gui, and can also work over ssh/telnet
-
-Lyntin is not great if:
-
-1. you prefer wizards and menus to the command line
-2. you hate Python
-3. you want fancy bells and whistles in the ui
-
-category: readme
-"""
-
 def load():
   exported.add_help("bugs", bugs)
   exported.add_help("command", command)
@@ -380,4 +270,4 @@ def load():
   exported.add_help("gettingstarted", gettingstarted)
   exported.add_help("osnotes", osnotes)
   exported.add_help("regexp", regexp)
-  exported.add_help("whylyntin", whylyntin)
+
