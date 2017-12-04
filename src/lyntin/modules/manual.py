@@ -24,26 +24,19 @@ This module holds the README manual text.
 from lyntin import exported
 
 bugs = """
-Lyntin was originally written by Lyn Headley.  Lyntin is currently 
-being maintained by Will Guaraldi (willhelm@users.sourceforge.net) 
-as of 1.3.2.
+Mudder is written by Manuel Cortez (manuel@manuelcortez.net). You can send your bug reports to the provided email address. All types of feedback are welcome.
 
-We appreciate ALL types of feedback.
-
-Inevitably you will either run across a bug in Lyntin or the need 
+Inevitably you will either run across a bug in mudder or the Lyntin framework; or the need 
 for a feature to be implemented.  When this happens, we ask you 
 to provide as much information as you can:
 
-  - operating system, version of Python and version of Lyntin
-    (from #diagnostics)
-  - stacktrace (if it's a bug and kicked up a stacktrace)
-  - explanation of what happened vs. what should be happening
-  - any other pertinent information
+  - Operating system and version of Mudder
+    (from #diagnostics).
+  - Stacktrace (if it's a bug and kicked up a stacktrace).
+  - Explanation of what happened vs. what should be happening.
+  - Any other pertinent information.
 
-Enter this in the bugs forum or send it to the mailing list.  
-Details for both are on the Lyntin web-site:
-
-   http://lyntin.sourceforge.net/
+Enter this in the issue tracker (https://github.com/manuelcortez/mudder/issues) or send it to manuel@manuelcortez.net.  
 
 category: readme
 """

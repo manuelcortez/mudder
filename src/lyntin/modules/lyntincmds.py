@@ -228,7 +228,7 @@ commands_dict["grep"] = (grep_cmd, "pattern size:int=300 context:int=0")
 
 def diagnostics_cmd(ses, args, input):
   """
-  This is very useful for finding out all the information about Lyntin
+  This is very useful for finding out all the information about Mudder
   while it's running.  This will print out operating system information,
   Python version, what threads are running (assuming they're registered
   with the ThreadManager), hooks, functions connected to hooks, and
@@ -250,13 +250,13 @@ def diagnostics_cmd(ses, args, input):
   message.append("Diagnostics:")
   message.append(exported.myengine.getDiagnostics())
 
-  message.append("Hook statii:")
+  message.append("Hook state:")
   data = exported.myengine.checkHooks()
   data.sort()
   for mem in data:
     message.append(mem)
 
-  message.append("Thread statii:")
+  message.append("Thread state:")
   data = exported.myengine.checkthreads()
   data.sort()
   for mem in data:
@@ -272,8 +272,7 @@ def diagnostics_cmd(ses, args, input):
     message.append("   os.name: %s" % os.name)
   except:
     message.append("   os.name not available.")
- 
-  message.append("   lyntin: %s" % (constants.VERSION[:constants.VERSION.find("\n")]))
+  message.append("   Mudder version 0.1 (lyntin: %s)" % (constants.VERSION[:constants.VERSION.find("\n")]))
 
   message.append("Lyntin Options:")
   for mem in config.options.keys():
