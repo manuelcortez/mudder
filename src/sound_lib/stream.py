@@ -32,10 +32,9 @@ class FileStream(BaseStream):
 
  def __init__(self, mem=False, file=None, offset=0, length=0, flags=0, three_d=False, mono=False, autofree=False, decode=False, unicode=True):
   """Creates a sample stream from an MP3, MP2, MP1, OGG, WAV, AIFF or plugin supported file."""
-  print file
-#  if platform.system() == 'Darwin' or platform.system() == "Linux":
-  unicode = False
-  file = file.encode(sys.getfilesystemencoding())
+  if platform.system() == 'Darwin' or platform.system() == "Linux":
+   unicode = False
+   file = file.encode(sys.getfilesystemencoding())
   self.setup_flag_mapping()
   flags = flags | self.flags_for(three_d=three_d, autofree=autofree, mono=mono, decode=decode, unicode=unicode)
   if unicode and isinstance(file, str):
@@ -60,32 +59,3 @@ class URLStream(BaseStream):
   flags = flags | self.flags_for(three_d=three_d, autofree=autofree, decode=decode)
   handle = bass_call(BASS_StreamCreateURL, url, offset, flags, self.downloadproc, user)
   super(URLStream, self).__init__(handle)
-
-class sampleStream(BaseStream):
-
- def __init__(self, mem=False, file=None, unicode=False, flags=0):
-  if platform.system() == 'Darwin' or platform.system() == "Linux":
-   unicode = False
-   file = file.encode(sys.getfilesystemencoding())
-  self.setup_flag_mapping()
-  self.flags = flags | self.flags_for(three_d=False)
-  self.setup_flag_mapping()
-  if unicode and isinstance(file, str):
-   self.file = convert_to_unicode(file)
-  self.file = file
-  self.sample_handle = bass_call(BASS_SampleLoad, mem, file, 0, 0, 256, self.flags)
-  self.handle = bass_call(BASS_SampleGetChannel, self.sample_handle, False)
-  super(sampleStream, self).__init__(self.handle)
-
- def play(self, restart=False):
-  if self.is_playing == True: return
-  super(sampleStream, self).play(restart=restart)
-
- def get_handle(self):
-  return bass_call(BASS_SampleGetChannel, self.sample_handle, False)
-
- def prepare_sound(self):
-  try:
-   self.volume
-  except:
-   self.handle = self.get_handle()

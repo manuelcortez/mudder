@@ -88,7 +88,7 @@ class Channel (FlagObject):
 
  def set_fx(self, type, priority=0):
   """Sets an effect on a stream, MOD music, or recording channel."""
-  return bass_call(BASS_ChannelSetFX, self.handle, type, priority)
+  return SoundEffect(bass_call(BASS_ChannelSetFX, type, priority))
 
  def bytes_to_seconds(self, position=None):
   """Translates a byte position into time (seconds), based on a channel's format."""
@@ -205,10 +205,7 @@ class Channel (FlagObject):
   return self.get_attribute(BASS_ATTRIB_PAN)
 
  def set_pan(self, pan):
-  if not self.illegal_pan(pan):
-   return self.set_attribute(BASS_ATTRIB_PAN, pan)
-  else:
-   return self.set_attribute(BASS_ATTRIB_PAN, 0.0)
+  return self.set_attribute(BASS_ATTRIB_PAN, pan)
 
  pan = property(fget=get_pan, fset=set_pan)
 
@@ -216,10 +213,7 @@ class Channel (FlagObject):
   return self.get_attribute(BASS_ATTRIB_VOL)
 
  def set_volume(self, volume):
-  if not self.illegal_volume(volume):
-   self.set_attribute(BASS_ATTRIB_VOL, volume)
-  else:
-   self.set_attribute(BASS_ATTRIB_VOL, 0.0)
+  self.set_attribute(BASS_ATTRIB_VOL, volume)
 
  volume = property(fget=get_volume, fset=set_volume)
 
@@ -289,9 +283,3 @@ class Channel (FlagObject):
    except BassError:
     pass
   return res
-
- def illegal_pan(self, pan):
-  return pan < -1.0 or pan > 1.0
-
- def illegal_volume(self, volume):
-  return volume > 1.0 or volume < 0.0

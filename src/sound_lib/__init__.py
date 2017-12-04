@@ -1,4 +1,4 @@
-from . import output, input, recording, stream
+import output, input, recording, stream
 
 __author__ = 'Christopher Toth'
 __version__ = 0.73
