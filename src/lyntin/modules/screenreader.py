@@ -1,9 +1,8 @@
 import types
+import output
 from lyntin import exported, utils
 from lyntin.ansi import filter_ansi
 from lyntin.ui import message
-import output
-output.setup()
 
 def handle_recv_data(args):
     msg = args["message"]
