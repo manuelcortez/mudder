@@ -17,7 +17,7 @@ Mudder will allow you to play your MUD games easily.
 
 class window(wx.Frame):
   def __init__(self):
-    super(window, self).__init__(parent=None, title="Lyntin WX GUI")
+    super(window, self).__init__(parent=None, title="Mudder")
     self.panel = wx.Panel(self)
     self.sizer = wx.BoxSizer(wx.VERTICAL)
     self.sb = self.CreateStatusBar()
