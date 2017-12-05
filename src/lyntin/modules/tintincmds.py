@@ -119,7 +119,7 @@ def help_cmd(ses, args, input):
   item = args["item"]
 
   keys = item.split(".")
-  data = "::Lyntin Help::\n\n"
+  data = "Mudder Help:\n\n"
 
   error, breadcrumbs, text = exported.get_help(item)
 
