@@ -570,7 +570,7 @@ s.
   """
   exported.write_message(args["text"], ses, window=args["window"])
 
-commands_dict['wshowme'] = ( wshowme_cmd, "window= text=" )
+#commands_dict['wshowme'] = ( wshowme_cmd, "window= text=" )
 
 
 def textin_cmd(ses, args, input):
