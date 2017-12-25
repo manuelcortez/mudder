@@ -119,8 +119,7 @@ def help_cmd(ses, args, input):
   item = args["item"]
 
   keys = item.split(".")
-  data = "Mudder Help:\n\n"
-
+  data = "Help:\n\n"
   error, breadcrumbs, text = exported.get_help(item)
 
   if error:

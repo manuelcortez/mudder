@@ -1,4 +1,5 @@
 import os.path
+import sound_lib
 from lyntin import exported
 from lyntin.modules import modutils
 
@@ -6,9 +7,8 @@ from lyntin.modules import modutils
 # Lyntin later on
 commands_dict = {}
 
-import sound_lib
-
 _volume = 50
+_ambiance = None
 
 sources = []
 
@@ -62,6 +62,25 @@ def volume_cmd(ses, args, input):
         exported.write_message("couldn't set volume: %s must be an integer from 0 to 100" % args["volume"])
 
 commands_dict["sound.volume"] = (volume_cmd, "volume")
+
+def play_ambiance_cmd(ses, args, input):
+    """
+    Play an environmental sound (for example, ambient sound in a room). It's the same than sound.play but it will loop the sound. There is only one sound allowed. When playing the next sound, the previous one will be stopped.
+    """
+    global _ambiance
+    filename = args["filename"]
+    if "/" in filename:
+        fileparts = filename.split("/")
+        fileparts.insert(0, "sounds")
+    else:
+        fileparts = ["sounds", filename]
+    volume = args["volume"]
+    _ambiance = sound_lib.stream.FileStream(file=os.path.abspath(os.path.join(*fileparts)))
+    _ambiance.volume=int(_volume)/100.0
+    _ambiance.looping = True
+    _ambiance.play()
+
+commands_dict["sound.play_ambiance"] = (play_ambiance_cmd, "filename= volume=50")
 
 def load():
     """ Initializes the module by binding all the commands."""
