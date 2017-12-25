@@ -82,6 +82,17 @@ def play_ambiance_cmd(ses, args, input):
 
 commands_dict["sound.play_ambiance"] = (play_ambiance_cmd, "filename= volume=50")
 
+def stop_ambiance_cmd(ses, args, input):
+    """
+    Stop the current ambient sound.
+"""
+    global _ambiance
+    if _ambiance != None and _ambiance.is_playing:
+        _ambiance.stop()
+        _ambiance = None
+
+commands_dict["sound.stop_ambiance"] = (stop_ambiance_cmd, "")
+
 def load():
     """ Initializes the module by binding all the commands."""
     sound_lib.output.Output()
