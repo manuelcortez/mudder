@@ -41,8 +41,6 @@ class window(wx.Frame):
     point = self.output.GetInsertionPoint()
     self.output.AppendText(text)
     self.output.SetInsertionPoint(point)
-#    if text != "" and text.isspace() == False:
-#      output.speak(text)
 
 class wxui(base.BaseUI):
   def __init__(self):
@@ -115,10 +113,10 @@ class wxui(base.BaseUI):
     to the user.
     """
     msg = args["message"]
-
     if type(msg) == types.StringType:
       msg = message.Message(msg, message.LTDATA)
-
+    if not hasattr(msg, "data"):
+      return
     line = msg.data
     ses = msg.session
 

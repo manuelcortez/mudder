@@ -9,7 +9,8 @@ def handle_recv_data(args):
 
     if type(msg) == types.StringType:
       msg = message.Message(msg, message.LTDATA)
-
+    if not hasattr(msg, "data"):
+      return
     line = msg.data
     ses = msg.session
 
