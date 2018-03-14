@@ -120,7 +120,6 @@ def help_cmd(ses, args, input):
 
   keys = item.split(".")
   data = "Help:\n\n"
-
   error, breadcrumbs, text = exported.get_help(item)
 
   if error:
