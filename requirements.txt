@@ -1,0 +1,3 @@
+wxpython
+hg+http://hg.q-continuum.net/platform_utils#egg=platform_utils
+py2exe
