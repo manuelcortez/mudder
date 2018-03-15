@@ -10,10 +10,8 @@
 import sys
 import os
 import output
-from platform_utils import paths
-import logging
-logging.basicConfig(filename=os.path.join(paths.app_path(), "info.log"), filemode="w")
 import fixes
+from platform_utils import paths
 fixes.setup()
 output.setup()
 
