@@ -28,7 +28,7 @@ def get_data():
  import sound_lib
  return [
   ("accessible_output2/lib", glob("accessible_output2/lib/*.dll")),
- ]+get_sounds()+accessible_output2.find_datafiles()+sound_lib.find_datafiles()
+ ]+get_sounds()+get_modules()+accessible_output2.find_datafiles()+sound_lib.find_datafiles()
 
 def get_sounds():
  answer = []
@@ -37,6 +37,17 @@ def get_sounds():
   if depth == 0:
    break
   new = (root, glob(os.path.join(root, "*.ogg")))
+  answer.append(new)
+  depth -= 1
+ return answer
+
+def get_modules():
+ answer = []
+ depth = 6
+ for root, dirs, files in os.walk("modules"):
+  if depth == 0:
+   break
+  new = (root, glob(os.path.join(root, "*.py")))
   answer.append(new)
   depth -= 1
  return answer
@@ -53,9 +64,8 @@ data_files = get_data(),
 options = {
    'py2exe': {   
     'optimize':2,
-   'packages': ["lyntin"],
+   'packages': ["lyntin", "sound_lib", "code"],
     'dll_excludes': ["MPR.dll", "api-ms-win-core-apiquery-l1-1-0.dll", "api-ms-win-core-console-l1-1-0.dll", "api-ms-win-core-delayload-l1-1-1.dll", "api-ms-win-core-errorhandling-l1-1-1.dll", "api-ms-win-core-file-l1-2-0.dll", "api-ms-win-core-handle-l1-1-0.dll", "api-ms-win-core-heap-obsolete-l1-1-0.dll", "api-ms-win-core-libraryloader-l1-1-1.dll", "api-ms-win-core-localization-l1-2-0.dll", "api-ms-win-core-processenvironment-l1-2-0.dll", "api-ms-win-core-processthreads-l1-1-1.dll", "api-ms-win-core-profile-l1-1-0.dll", "api-ms-win-core-registry-l1-1-0.dll", "api-ms-win-core-synch-l1-2-0.dll", "api-ms-win-core-sysinfo-l1-2-0.dll", "api-ms-win-security-base-l1-2-0.dll", "api-ms-win-core-heap-l1-2-0.dll", "api-ms-win-core-interlocked-l1-2-0.dll", "api-ms-win-core-localization-obsolete-l1-1-0.dll", "api-ms-win-core-string-l1-1-0.dll", "api-ms-win-core-string-obsolete-l1-1-0.dll", "WLDAP32.dll", "MSVCP90.dll"],
-#    'skip_archive': False
    },
   },
   windows = [
