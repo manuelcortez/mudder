@@ -2,6 +2,7 @@ import os.path
 import sound_lib
 from lyntin import exported
 from lyntin.modules import modutils
+from platform_utils import paths
 
 # this will hold the command information for adding to
 # Lyntin later on
@@ -14,7 +15,11 @@ sources = []
 
 def play(sound):
     global sources, _volume
-    src = sound_lib.stream.FileStream(file=os.path.abspath(sound))
+    try:
+        f=unicode(os.path.join(paths.app_path(), sound), "utf-8")
+    except:
+        f=os.path.join(paths.app_path(), sound)
+    src = sound_lib.stream.FileStream(file=f)
     src.volume=int(_volume)/100.0
     src.play()
     sources.append(src)
