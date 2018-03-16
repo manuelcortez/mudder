@@ -11,7 +11,9 @@ import sys
 import os
 import output
 import fixes
+import i18n
 from platform_utils import paths
+i18n.setup()
 fixes.setup()
 output.setup()
 
