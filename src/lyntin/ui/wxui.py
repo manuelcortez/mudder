@@ -17,8 +17,24 @@ Mudder will allow you to play your MUD games easily.
 category: mudder"""
 
 class window(wx.Frame):
+
+  def makeMenu(self):
+    mb = wx.MenuBar()
+    file = wx.Menu()
+    self.file_open = file.Append(wx.NewId(), "Open pack file")
+    help_ = wx.Menu()
+    self.about = help_.Append(wx.NewId(), "About Mudder")
+    self.check_for_updates = help_.Append(wx.NewId(), "Check for updates")
+    self.changelog = help_.Append(wx.NewId(), "What's new in this version?")
+    self.website = help_.Append(wx.NewId(), "Visit website")
+    mb.Append(file, "File")
+    mb.Append(help_, "Help")
+    self.SetMenuBar(mb)
+
   def __init__(self):
     super(window, self).__init__(parent=None, title="Mudder")
+    self.Maximize()
+    self.makeMenu()
     self.panel = wx.Panel(self)
     self.sizer = wx.BoxSizer(wx.VERTICAL)
     self.sb = self.CreateStatusBar()
