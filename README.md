@@ -17,3 +17,15 @@ Mudder is a software to allow playing of MUD (multi user domain) games in an eas
 * Has a Lyntin and Tintin evaluation modes--the Tintin mode will work with Tintin command files and Tintin syntax.
 * In-game help 
 * Dynamically loaded modules for additional functionality.
+
+## Running from sources
+
+1. You will need [Python 2.7](https://python.org)
+2. Install requirements from the requirements file: pip install -r requirements.txt
+3. Run "python src/run.py"
+4. If you have made a settings file (.ini) you can import it at startup by running something like: "python run.py file.ini".
+5. Or you can import it once Mudder has been started with the #read command (type #help read for more info).
+
+## Status
+
+Currently, there are no available builds ready to download. Theoretically py2exe should be able to build a Windows binary version of the program. However I have decided to keep working in Lyntin's internals a bit and improve the GUI for mudder before releasing something. If you want to try it out, I suggest to do it from sources.
