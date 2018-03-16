@@ -11,6 +11,7 @@ def get_ui_instance():
     myui = wxui()
   return myui
 
+# Fixme: Replace this with a better and more detailed description.
 HELP_TEXT = """
 Mudder will allow you to play your MUD games easily.
 
@@ -21,14 +22,14 @@ class window(wx.Frame):
   def makeMenu(self):
     mb = wx.MenuBar()
     file = wx.Menu()
-    self.file_open = file.Append(wx.NewId(), "Open pack file")
+    self.file_open = file.Append(wx.NewId(), _(u"Open pack file"))
     help_ = wx.Menu()
-    self.about = help_.Append(wx.NewId(), "About Mudder")
-    self.check_for_updates = help_.Append(wx.NewId(), "Check for updates")
-    self.changelog = help_.Append(wx.NewId(), "What's new in this version?")
-    self.website = help_.Append(wx.NewId(), "Visit website")
-    mb.Append(file, "File")
-    mb.Append(help_, "Help")
+    self.about = help_.Append(wx.NewId(), _(u"About Mudder"))
+    self.check_for_updates = help_.Append(wx.NewId(), _(u"Check for updates"))
+    self.changelog = help_.Append(wx.NewId(), _(u"What's new in this version?"))
+    self.website = help_.Append(wx.NewId(), _(u"Visit website"))
+    mb.Append(file, _(u"File"))
+    mb.Append(help_, _(u"Help"))
     self.SetMenuBar(mb)
 
   def __init__(self):
@@ -38,12 +39,12 @@ class window(wx.Frame):
     self.panel = wx.Panel(self)
     self.sizer = wx.BoxSizer(wx.VERTICAL)
     self.sb = self.CreateStatusBar()
-    label = wx.StaticText(self.panel, wx.NewId(),   "input")
+    label = wx.StaticText(self.panel, wx.NewId(),   _(u"input"))
     self.input = wx.TextCtrl(self.panel, wx.NewId())
     inputBox = wx.BoxSizer(wx.HORIZONTAL)
     inputBox.Add(label, 0, wx.ALL, 5)
     inputBox.Add(self.input, 0, wx.ALL, 5)
-    label = wx.StaticText(self.panel, wx.NewId(),   "history")
+    label = wx.StaticText(self.panel, wx.NewId(),   _(u"history"))
     self.output = wx.TextCtrl(self.panel, wx.NewId(), style=wx.TE_MULTILINE|wx.TE_READONLY, size=(500, 300))
     outputBox = wx.BoxSizer(wx.HORIZONTAL)
     outputBox.Add(label, 0, wx.ALL, 5)
@@ -89,7 +90,7 @@ class wxui(base.BaseUI):
     return 1
 
   def shutdown(self, args):
-    pass
+    wx.GetApp().ExitMainLoop()
 
   def bell(self, args):
     """ Handles incoming bell characters."""
